@@ -66,3 +66,28 @@ let controller = {
 
   processGuess: function (guess) {},
 };
+
+function parseGuess(guess) {
+  const alphabet = ["a", "b", "c", "d", "e", "f", "g"];
+  if (guess === null || guess.length !== 2) {
+    alert("oops, please enter a letter and a number on the board");
+  } else {
+    let firstChar = guess.charAt(0);
+    let row = alphabet.indexOf(firstChar);
+    var column = guess.charAt(1);
+
+    if (isNaN(row) || isNaN(column)) {
+      alert("Oops that isnt on the board");
+    } else if (
+      row < 0 ||
+      row >= model.boardSize ||
+      column < 0 ||
+      column >= model.boardSize
+    ) {
+      alert("Oops, thats off the board!");
+    } else {
+      return row + column;
+    }
+    return null;
+  }
+}
